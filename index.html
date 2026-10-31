@@ -469,7 +469,7 @@ function updTrack(){$('track').innerHTML=TASKS.map((t,i)=>{const d=S.done['t'+(i
  $('track').querySelectorAll('.nd').forEach(b=>b.onclick=()=>{const i=+b.dataset.i;if(S.done['t'+(i+1)]||i===nextUndone(-1)){sfxClick();showTask(i)}else toast('أكمل المراحل السابقة أولًا')});
  $('starsN').textContent=Object.values(S.done).reduce((a,b)=>a+b,0)+'/'+TASKS.length*3}
 /* ---- screens ---- */
-function startGame(){sfxClick();inGame=true;$('intro').classList.add('hidden');$('game').classList.remove('hidden');$('gbg').classList.remove('hidden');const n=nextUndone(-1);if(n<0){tIdx=0;showTask(0);showEnd()}else showTask(n)}
+function startGame(){sfxClick();inGame=true;$('intro').classList.add('hidden');$('game').classList.remove('hidden');$('gbg').classList.remove('hidden');let n=nextUndone(-1);if(n<0){S.done={};sv(LS,S);updTrack();n=0}showTask(n)}
 function toMenu(){inGame=false;clearTimeout(finish.h);closeAll();$('game').classList.add('hidden');$('gbg').classList.add('hidden');$('intro').classList.remove('hidden')}
 function closeAll(){for(const id of['endm'])$(id).classList.add('hidden')}
 function showEnd(){const tot=Object.values(S.done).reduce((a,b)=>a+b,0);$('endStars').textContent=tot+'/'+TASKS.length*3;$('endName').value=S.name||'';$('endm').classList.remove('hidden');burst()}
