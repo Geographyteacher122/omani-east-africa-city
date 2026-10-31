@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-<head>
+<head><script>/* سندباد عُمان الصغير: تسجيل إنهاء اللعبة لمرفأ السفينة */function __sbDone(){var r='';try{r=(location.pathname.split('/')[1]||'').toLowerCase().replace(/\.+$/,'');var c=null;try{c=JSON.parse(localStorage.getItem('sindbad-current')||'null')}catch(e){}var w=(c&&c.name)||'';var d={};try{d=JSON.parse(localStorage.getItem('sindbad-done')||'{}')||{}}catch(e){}(d[w]=d[w]||{})[r]=Date.now();localStorage.setItem('sindbad-done',JSON.stringify(d))}catch(e){}try{if(window.parent&&window.parent!==window)window.parent.postMessage({sindbadDone:r},'*')}catch(e){}}</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
 <title>جولة في مدن شرقي أفريقيا - الملامح الحضارية للتواجد العُماني</title>
@@ -475,7 +475,7 @@ function updTrack(){$('track').innerHTML=TASKS.map((t,i)=>{const d=S.done['t'+(i
 function startGame(){sfxClick();inGame=true;$('intro').classList.add('hidden');$('game').classList.remove('hidden');$('gbg').classList.remove('hidden');let n=nextUndone(-1);if(n<0){S.done={};sv(LS,S);updTrack();n=0}showTask(n)}
 function toMenu(){inGame=false;clearTimeout(finish.h);closeAll();$('game').classList.add('hidden');$('gbg').classList.add('hidden');$('intro').classList.remove('hidden')}
 function closeAll(){for(const id of['endm'])$(id).classList.add('hidden')}
-function showEnd(){const tot=Object.values(S.done).reduce((a,b)=>a+b,0);$('endStars').textContent=tot+'/'+TASKS.length*3;$('endTasks').textContent=Object.keys(S.done).length+'/'+TASKS.length;$('endName').value=S.name||'';$('endm').classList.remove('hidden');burst()}
+function showEnd(){__sbDone();const tot=Object.values(S.done).reduce((a,b)=>a+b,0);$('endStars').textContent=tot+'/'+TASKS.length*3;$('endTasks').textContent=Object.keys(S.done).length+'/'+TASKS.length;$('endName').value=S.name||'';$('endm').classList.remove('hidden');burst()}
 function cert(mode){const v=($('endName').value||'').trim();if(!v){$('endName').focus();return}S.name=v;sv(LS,S);
  const W=1600,H=1130,cv=document.createElement('canvas');cv.width=W;cv.height=H;const x=cv.getContext('2d'),F='Tajawal,Cairo,Tahoma,Arial,sans-serif';
  const g=x.createLinearGradient(0,0,0,H);g.addColorStop(0,'#FBF3E1');g.addColorStop(1,'#F5EAD5');x.fillStyle=g;x.fillRect(0,0,W,H);
